@@ -1,6 +1,6 @@
 # Nicolás Píriz - Eduvaluer Prueba Técnica
 
-API REST de transferencias bancarias desarrollada con Django REST Framework y PostgreSQL.
+API REST de transferencias de futbol desarrollada con Django REST Framework y PostgreSQL.
 
 ## Requisitos previos
 
