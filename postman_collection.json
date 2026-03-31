@@ -1,0 +1,455 @@
+{
+	"info": {
+		"name": "Transferencias de Fútbol API",
+		"description": "API REST para registrar y consultar el historial de transferencias de jugadores de fútbol entre clubes.\n\nPrueba técnica - Nicolás Piriz - Eduvaluer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000/api"
+		}
+	],
+	"item": [
+		{
+			"name": "Players",
+			"item": [
+				{
+					"name": "Listar jugadores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/players/",
+							"host": ["{{base_url}}"],
+							"path": ["players", ""]
+						}
+					}
+				},
+				{
+					"name": "Crear jugador",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Lionel Messi\",\n    \"date_of_birth\": \"1987-06-24\",\n    \"nationality\": \"Argentina\",\n    \"position\": \"FW\",\n    \"current_club\": 2\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/players/",
+							"host": ["{{base_url}}"],
+							"path": ["players", ""]
+						}
+					}
+				},
+				{
+					"name": "Detalle jugador",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/players/1/",
+							"host": ["{{base_url}}"],
+							"path": ["players", "1", ""]
+						}
+					}
+				},
+				{
+					"name": "Editar jugador (PUT)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Kylian Mbappé\",\n    \"date_of_birth\": \"1998-12-20\",\n    \"nationality\": \"France\",\n    \"position\": \"FW\",\n    \"current_club\": 1\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/players/1/",
+							"host": ["{{base_url}}"],
+							"path": ["players", "1", ""]
+						}
+					}
+				},
+				{
+					"name": "Editar jugador parcial (PATCH)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"current_club\": 3\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/players/1/",
+							"host": ["{{base_url}}"],
+							"path": ["players", "1", ""]
+						}
+					}
+				},
+				{
+					"name": "Eliminar jugador",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/players/1/",
+							"host": ["{{base_url}}"],
+							"path": ["players", "1", ""]
+						}
+					}
+				},
+				{
+					"name": "Historial transferencias del jugador",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/players/1/transfers/",
+							"host": ["{{base_url}}"],
+							"path": ["players", "1", "transfers", ""]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Clubs",
+			"item": [
+				{
+					"name": "Listar clubes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/clubs/",
+							"host": ["{{base_url}}"],
+							"path": ["clubs", ""]
+						}
+					}
+				},
+				{
+					"name": "Crear club",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Peñarol\",\n    \"country\": \"Uruguay\",\n    \"founded_year\": 1891\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/clubs/",
+							"host": ["{{base_url}}"],
+							"path": ["clubs", ""]
+						}
+					}
+				},
+				{
+					"name": "Detalle club",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/clubs/1/",
+							"host": ["{{base_url}}"],
+							"path": ["clubs", "1", ""]
+						}
+					}
+				},
+				{
+					"name": "Editar club (PUT)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Real Madrid CF\",\n    \"country\": \"Spain\",\n    \"founded_year\": 1902\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/clubs/1/",
+							"host": ["{{base_url}}"],
+							"path": ["clubs", "1", ""]
+						}
+					}
+				},
+				{
+					"name": "Editar club parcial (PATCH)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Real Madrid CF\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/clubs/1/",
+							"host": ["{{base_url}}"],
+							"path": ["clubs", "1", ""]
+						}
+					}
+				},
+				{
+					"name": "Eliminar club",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/clubs/1/",
+							"host": ["{{base_url}}"],
+							"path": ["clubs", "1", ""]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Transfers",
+			"item": [
+				{
+					"name": "Listar transferencias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/transfers/",
+							"host": ["{{base_url}}"],
+							"path": ["transfers", ""]
+						}
+					}
+				},
+				{
+					"name": "Crear transferencia",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"player\": 3,\n    \"origin_club\": 2,\n    \"destination_club\": 5,\n    \"transfer_date\": \"2026-03-15\",\n    \"transfer_fee\": 80000000.00\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/transfers/",
+							"host": ["{{base_url}}"],
+							"path": ["transfers", ""]
+						}
+					}
+				},
+				{
+					"name": "Detalle transferencia",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/transfers/1/",
+							"host": ["{{base_url}}"],
+							"path": ["transfers", "1", ""]
+						}
+					}
+				},
+				{
+					"name": "Editar transferencia (PUT)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"player\": 3,\n    \"origin_club\": 2,\n    \"destination_club\": 5,\n    \"transfer_date\": \"2026-03-20\",\n    \"transfer_fee\": 85000000.00\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/transfers/1/",
+							"host": ["{{base_url}}"],
+							"path": ["transfers", "1", ""]
+						}
+					}
+				},
+				{
+					"name": "Editar transferencia parcial (PATCH)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"transfer_fee\": 90000000.00\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/transfers/1/",
+							"host": ["{{base_url}}"],
+							"path": ["transfers", "1", ""]
+						}
+					}
+				},
+				{
+					"name": "Eliminar transferencia",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/transfers/1/",
+							"host": ["{{base_url}}"],
+							"path": ["transfers", "1", ""]
+						}
+					}
+				},
+				{
+					"name": "Filtrar transferencias (todos los filtros)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/transfers/?player=1&origin_club=6&destination_club=1&date_from=2024-01-01&date_to=2026-12-31&fee_min=1000000&fee_max=300000000",
+							"host": ["{{base_url}}"],
+							"path": ["transfers", ""],
+							"query": [
+								{
+									"key": "player",
+									"value": "1",
+									"description": "ID del jugador"
+								},
+								{
+									"key": "origin_club",
+									"value": "6",
+									"description": "ID del club de origen"
+								},
+								{
+									"key": "destination_club",
+									"value": "1",
+									"description": "ID del club de destino"
+								},
+								{
+									"key": "date_from",
+									"value": "2024-01-01",
+									"description": "Fecha mínima"
+								},
+								{
+									"key": "date_to",
+									"value": "2026-12-31",
+									"description": "Fecha máxima"
+								},
+								{
+									"key": "fee_min",
+									"value": "1000000",
+									"description": "Monto mínimo"
+								},
+								{
+									"key": "fee_max",
+									"value": "300000000",
+									"description": "Monto máximo"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Filtrar por jugador",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/transfers/?player=1",
+							"host": ["{{base_url}}"],
+							"path": ["transfers", ""],
+							"query": [
+								{
+									"key": "player",
+									"value": "1",
+									"description": "ID del jugador"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Filtrar por rango de fechas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/transfers/?date_from=2024-01-01&date_to=2025-12-31",
+							"host": ["{{base_url}}"],
+							"path": ["transfers", ""],
+							"query": [
+								{
+									"key": "date_from",
+									"value": "2024-01-01",
+									"description": "Fecha desde"
+								},
+								{
+									"key": "date_to",
+									"value": "2025-12-31",
+									"description": "Fecha hasta"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Filtrar por rango de monto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/transfers/?fee_min=10000000&fee_max=100000000",
+							"host": ["{{base_url}}"],
+							"path": ["transfers", ""],
+							"query": [
+								{
+									"key": "fee_min",
+									"value": "10000000",
+									"description": "Monto mínimo"
+								},
+								{
+									"key": "fee_max",
+									"value": "100000000",
+									"description": "Monto máximo"
+								}
+							]
+						}
+					}
+				}
+			]
+		}
+	]
+}
