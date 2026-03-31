@@ -15,13 +15,7 @@ git clone <url-del-repositorio>
 cd nicolas_piriz_eduvaluer_prueba_tecnica
 ```
 
-2. Copiar el archivo de variables de entorno:
-
-```bash
-cp .env.example .env
-```
-
-3. Levantar los contenedores con Docker Compose:
+2. Levantar los contenedores con Docker Compose:
 
 ```bash
 docker-compose up --build
@@ -32,7 +26,7 @@ Esto levanta automáticamente:
 - La aplicación **Django** en el puerto `8000`
 - Ejecuta las migraciones y carga datos de prueba (seed)
 
-4. La API estará disponible en: `http://localhost:8000`
+3. La API estará disponible en: `http://localhost:8000/api/`
 
 ## Probar la API con Postman
 
