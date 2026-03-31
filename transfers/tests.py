@@ -98,6 +98,8 @@ class TransferAPITest(TestCase):
             },
         )
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.player.refresh_from_db()
+        self.assertEqual(self.player.current_club, self.club_b)
 
     def test_transfer_same_origin_destination(self):
         response = self.client.post(

@@ -1,5 +1,6 @@
 from datetime import date
 
+from django.db import transaction
 from rest_framework import serializers
 
 from .models import Club, Player, Transfer
@@ -73,3 +74,11 @@ class TransferSerializer(serializers.ModelSerializer):
             )
 
         return data
+
+    def create(self, validated_data):
+        with transaction.atomic():
+            transfer = super().create(validated_data)
+            player = transfer.player
+            player.current_club = transfer.destination_club
+            player.save(update_fields=["current_club"])
+        return transfer
