@@ -153,3 +153,16 @@ class TransferAPITest(TestCase):
         response = self.client.get(f"/api/transfers/?player={self.player.id}")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data["count"], 1)
+
+    def test_delete_club_preserves_transfers(self):
+        transfer = Transfer.objects.create(
+            player=self.player,
+            origin_club=self.club_a,
+            destination_club=self.club_b,
+            transfer_date=date(2024, 1, 1),
+            transfer_fee=Decimal("5000000"),
+        )
+        self.club_a.delete()
+        self.assertTrue(Transfer.objects.filter(pk=transfer.pk).exists())
+        transfer.refresh_from_db()
+        self.assertIsNone(transfer.origin_club)

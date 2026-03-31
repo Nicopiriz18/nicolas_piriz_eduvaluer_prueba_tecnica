@@ -45,13 +45,17 @@ class Transfer(models.Model):
     )
     origin_club = models.ForeignKey(
         Club,
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
         null=True,
         blank=True,
         related_name="outgoing_transfers",
     )
     destination_club = models.ForeignKey(
-        Club, on_delete=models.CASCADE, related_name="incoming_transfers"
+        Club,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="incoming_transfers",
     )
     transfer_date = models.DateField()
     transfer_fee = models.DecimalField(
