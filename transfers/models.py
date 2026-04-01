@@ -67,4 +67,6 @@ class Transfer(models.Model):
 
     def __str__(self):
         origin = self.origin_club.name if self.origin_club else "Free Agent"
-        return f"{self.player.name}: {origin} → {self.destination_club.name}"
+        destination = self.destination_club.name if self.destination_club else "Unknown"
+        player_name = self.player.name if self.player else "Unknown Player"
+        return f"{player_name}: {origin} → {destination}"
